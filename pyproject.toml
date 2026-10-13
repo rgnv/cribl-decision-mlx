@@ -1,0 +1,25 @@
+[project]
+name = "cribl-decision-mlx"
+version = "0.1.0"
+description = "Cribl Decision 1.0 (LoRA on Qwen3.5-4B-Base) on Apple Silicon via MLX: typed choice/noul/score answers from one forward pass"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "mlx>=0.32",
+    "mlx-lm>=0.32",
+    "transformers>=5.19",     # Qwen3.5 tokenizer
+    "huggingface_hub>=1.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["cribl_decision", "cribl_mlx", "serve"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
